@@ -57,6 +57,11 @@ a:hover {
   border-radius: 4px;
 }
 
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #fff4;
+  border: 1px solid #8884;
+}
+
 /* use viewport-relative units to cover page fully */
 
 body {
