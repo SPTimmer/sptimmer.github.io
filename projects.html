@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="SPTimmer's website" />
+    <meta charset="utf-8">
+    <title>SPTimmer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="SPTimmer">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/svg-transitions.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    <header id="header"></header>
+    <footer id="footer"></footer>
+
+    <script>
+        $("#header").load("assets/header.html", function () {
+            let page = window.location.pathname.split("/").pop();
+            if (page === "") {
+                $("#index").addClass("active");
+            } else {
+                $("#" + page.split(".")[0]).addClass("active");
+            }
+        });
+        $("#footer").load("assets/footer.html", function () {
+            $("#year").text(new Date().getFullYear());
+        });
+        function openSmolMenu() {
+            $("#nav").addClass("showMenu");
+        }
+        function closeSmolMenu() {
+            $("#nav").removeClass("showMenu");
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,416 @@
+:root {
+  --darkest: #111111;
+  --darker: #171717;
+}
+
+/* override browser default */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #fff;
+}
+
+a:link {
+  color: #fff;
+}
+
+a:hover {
+  color: #55dfaa;
+  text-decoration-color: #55dfaa;
+  -webkit-text-decoration-color: #55dfaa;
+  transition: 0.2s;
+}
+
+/* use viewport-relative units to cover page fully */
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--darkest);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  scrollbar-gutter: stable;
+}
+
+.container {
+  width: 75vw;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
+  transition: all ease-in-out 0.1s;
+}
+
+/* header */
+
+header {
+  background-color: var(--darker);
+  min-height: 8rem;
+  font-weight: 600;
+}
+
+header::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 90vw;
+  }
+}
+/* logo */
+
+.logo {
+  float: left;
+  width: 25%;
+  max-height: 70px;
+  margin: 0;
+  position: absolute;
+  top: 4rem;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.logo svg {
+  max-height: 70px;
+}
+
+.logo .shortLogo {
+  display: none;
+}
+
+.logo .longLogo {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .logo {
+    width: 35%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .logo .shortLogo {
+    display: block;
+  }
+
+  .logo .longLogo {
+    display: none;
+  }
+}
+
+/* close-logo */
+
+/* nav */
+
+header nav {
+  width: 75%;
+  min-height: 8rem;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul {
+  width: 100%;
+  min-height: 8rem;
+  float: right;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+header nav li {
+  min-height: 8rem;
+  text-align: right;
+  display: inline-block;
+}
+
+header nav a {
+  height: 2rem;
+  color: #fff;
+  font-size: 2rem;
+  
+  text-transform: uppercase;
+  position: relative;
+
+  padding: 3rem 0;
+  bottom: 0px;
+  top: 3rem;
+}
+
+header nav a::before {
+  content: "";
+  display: block;
+  height: 0.5rem;
+  background-color: #55dfaa;
+
+  position: absolute;
+  top: 0px;
+  right: 0;
+  width: 0%;
+  transition: all ease-in-out 0.2s;
+  animation-direction: reverse;
+}
+
+header nav .active a::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 0.5rem;
+  background-color: #55dfaa;
+  width: 100%;
+  bottom: 2.5rem;
+  right: 0;
+}
+
+header nav li:not(.active, .menu) a:hover::before {
+  width: 100%;
+}
+
+header nav .closeMenu {
+  display: none;
+}
+
+header nav .menu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  header nav {
+    width: 65%;
+  }
+
+  header nav ul {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  header nav li.active {
+    padding-right: 5vw;
+  }
+
+  header nav:not(.showMenu) li:not(.active, .menu) {
+    display: none;
+  }
+
+  header nav.showMenu li:not(.active, .menu) {
+    display: block;
+  }
+
+  header nav:not(.showMenu) .menu {
+    display: inline-block;
+  }
+
+  header nav.showMenu li.active {
+    padding-right: 0;
+  }
+
+  header nav .closeMenu svg {
+    height: 3rem;
+    padding: 2.5rem 0;
+  }
+
+  header nav .menu svg {
+    height: 3rem;
+    padding: 2.5rem 0;
+  }
+
+  header nav.showMenu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 20rem;
+    height: 100vh;
+    background-color: #101010;
+    transition: 0.5s;
+    z-index: 10;
+  }
+
+  header nav.showMenu ul {
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    right: 0;
+    top: 0;
+    width: 20rem;
+    height: 100vw;
+  }
+
+  header nav.showMenu li:not(.menu) {
+    display: inline-block;
+    position: relative;
+    right: 5vw;
+  }
+}
+
+/* close-nav */
+
+/* close-header */
+
+/* main */
+
+main {
+  padding-bottom: 11.6rem;
+}
+
+section {
+  height: 200px;
+}
+
+@media (min-width: 1200px) {
+  main {
+    padding-bottom: 9.8rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  main {
+    padding-bottom: 15.8rem;
+  }
+}
+
+/* close main*/
+
+/* footer */
+
+footer {
+  width: 100vw;
+  background-color: var(--darker);
+  position: absolute;
+  bottom: 0;
+  min-height: 11.6rem;
+}
+
+footer .outer-grid {
+  width: 100%;
+  margin: auto;
+  color: #fff;
+}
+
+footer .outer-grid > div {
+  margin: 1.6rem 0;
+}
+
+footer nav {
+  min-height: fit-content;
+}
+
+footer nav div {
+  margin-block-start: 1.6rem;
+  margin-block-end: 1.6rem;
+  font-size: 2rem;
+  height: 2rem;
+  font-weight: bold;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  list-style-type: none;
+    flex-wrap: wrap;
+  padding: 0;
+  margin: 1.6rem 0;
+}
+
+footer li {
+  text-align: end;
+  width: fit-content;
+  font-size: 2rem;
+  height: 2rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+footer a {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+}
+
+footer img,
+footer svg {
+  display: inline-block;
+  height: 2rem;
+  vertical-align: baseline;
+}
+
+footer .top span {
+  display: inline-block;
+  line-height: 2rem;
+  vertical-align: top;
+  margin-bottom: 0;
+}
+
+footer .bottom {
+  height: 1.4rem;
+}
+
+footer .copy {
+  position: relative;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: lighter;
+  height: 1.4rem;
+}
+
+@media (min-width: 1200px) {
+  footer nav div {
+    width: 10%;
+    float: left;
+  }
+
+  footer nav ul {
+    width: 90%;
+    float: right;
+  }
+
+  footer nav {
+    min-height: 5.2rem;
+  }
+
+  footer {
+    min-height: 9.8rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  footer ul {
+    flex-wrap: wrap;
+  }
+
+  footer li {
+    flex-basis: 30%;
+  }
+
+  footer li.col1 {
+    text-align: left;
+  }
+
+  footer li.col2 {
+    text-align: center;
+  }
+
+  footer {
+    min-height: 15.2rem;
+  }
+}
+
+/* close-footer */

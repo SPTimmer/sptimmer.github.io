@@ -1,0 +1,15 @@
+<svg viewBox="0 0 180 90"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Simple rectangle -->
+    <g color="black">
+        <!-- Border -->
+        <path d="M 0 0 h 180 v 90 h -180 v -90 m 10 10 v 70 h 160 v -70 h -160" fill="currentcolor"/>
+        <!-- S -->
+        <!-- horizontals -->
+        <path d="M 20 20 h 40 v 10 h -30 v 10 h 30 v 30 h -40 v -10 h 30 v -10 h -30 v -30" fill="currentcolor" />
+        <!-- P -->
+        <path d="M 70 20 h 40 v 30 h -30 v 20 h -10 v -50 m 10 10 v 10 h 20 v -10 h -20" fill="currentcolor"/>
+        <!-- T -->
+        <path d="M 120 20 h 40 v 10 h -15 v 40 h -10 v -40 h -15 v -10" fill="currentcolor" />
+    </g>
+</svg>
