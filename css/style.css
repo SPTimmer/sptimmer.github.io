@@ -36,7 +36,7 @@ a:hover {
 
 *::-webkit-scrollbar {
   display: block;
-  width: 8px;
+  width: 12px;
 }
 
 *::-webkit-scrollbar-button {
@@ -52,14 +52,14 @@ a:hover {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #8884;
-  border: 1px solid #fff4;
-  border-radius: 4px;
+  background-color: #7774;
+  border: 2px solid #fff4;
+  border-radius: 16px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: #fff4;
-  border: 1px solid #8884;
+  border: 2px solid #7774;
 }
 
 /* use viewport-relative units to cover page fully */
