@@ -17,6 +17,7 @@ body {
 
 a {
   text-decoration: none;
+  width: max-content;
 }
 
 a:visited {
