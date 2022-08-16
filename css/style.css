@@ -17,10 +17,95 @@ body {
 
 a {
   text-decoration: none;
+  width: max-content;
 }
 
 a:visited {
   color: #fff;
+}
+
+.row {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.col {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.end {
+  justify-content: end;
+}
+
+.center {
+  justify-content: center;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #222;
+  background-clip: border-box;
+  border: 0.2rem solid #444;
+  border-radius: 0.8rem;
+  width: 40rem;
+}
+
+.card-image {
+  width: 100%;
+}
+
+.card-header {
+  font-size: large;
+  text-align: center;
+  color: #eee;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 0.2rem solid #444;
+}
+
+.card-footer {
+  font-size: large;
+  text-align: center;
+  color: #eee;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 0.2rem solid #444;
+}
+
+.card> :first-child {
+  border-top-right-radius: 0.8rem;
+  border-top-left-radius: 0.8rem;
+}
+
+.card> :last-child {
+  border-bottom-right-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
 }
 
 a:link {
@@ -36,7 +121,7 @@ a:hover {
 
 *::-webkit-scrollbar {
   display: block;
-  width: 12px;
+  width: 1.2rem;
 }
 
 *::-webkit-scrollbar-button {
@@ -53,13 +138,13 @@ a:hover {
 
 *::-webkit-scrollbar-thumb {
   background-color: #7774;
-  border: 2px solid #fff4;
+  border: 0.2rem solid #fff4;
   border-radius: 16px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: #fff4;
-  border: 2px solid #7774;
+  border: 0.2rem solid #7774;
 }
 
 /* use viewport-relative units to cover page fully */
@@ -77,6 +162,7 @@ body {
   width: 75vw;
   min-height: 100%;
   margin: 0 auto;
+  padding: 1.6rem 0;
   position: relative;
   transition: all ease-in-out 0.1s;
 }
@@ -103,18 +189,11 @@ header::after {
 /* logo */
 
 .logo {
-  float: left;
-  width: 25%;
-  max-height: 70px;
-  margin: 0;
-  position: absolute;
-  top: 4rem;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  width: 100%;
 }
 
 .logo svg {
-  max-height: 70px;
+  max-height: 7rem;
 }
 
 .logo .shortLogo {
@@ -144,43 +223,20 @@ header::after {
 /* close-logo */
 
 /* nav */
-
 header nav {
-  width: 75%;
-  min-height: 8rem;
-  float: right;
-  margin: 0;
-  padding: 0;
-}
-
-header nav ul {
-  width: 100%;
-  min-height: 8rem;
-  float: right;
-  margin: 0;
-  padding: 0;
-  display: flex;
   justify-content: space-between;
-  list-style: none;
 }
 
 header nav li {
-  min-height: 8rem;
-  text-align: right;
-  display: inline-block;
+  display: block;
 }
 
 header nav a {
-  height: 2rem;
   color: #fff;
   font-size: 2rem;
   
   text-transform: uppercase;
   position: relative;
-
-  padding: 3rem 0;
-  bottom: 0px;
-  top: 3rem;
 }
 
 header nav a::before {
@@ -190,7 +246,7 @@ header nav a::before {
   background-color: #55dfaa;
 
   position: absolute;
-  top: 0px;
+  bottom: -1rem;
   right: 0;
   width: 0%;
   transition: all ease-in-out 0.2s;
@@ -204,7 +260,7 @@ header nav .active a::after {
   height: 0.5rem;
   background-color: #55dfaa;
   width: 100%;
-  bottom: 2.5rem;
+  bottom: -1rem;
   right: 0;
 }
 
@@ -221,19 +277,6 @@ header nav .menu {
 }
 
 @media (max-width: 900px) {
-  header nav {
-    width: 65%;
-  }
-
-  header nav ul {
-    width: 100%;
-    justify-content: flex-end;
-  }
-
-  header nav li.active {
-    padding-right: 5vw;
-  }
-
   header nav:not(.showMenu) li:not(.active, .menu) {
     display: none;
   }
@@ -271,19 +314,8 @@ header nav .menu {
     z-index: 10;
   }
 
-  header nav.showMenu ul {
-    position: fixed;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    right: 0;
-    top: 0;
-    width: 20rem;
-    height: 100vw;
-  }
-
   header nav.showMenu li:not(.menu) {
-    display: inline-block;
+    display: block;
     position: relative;
     right: 5vw;
   }
