@@ -1,6 +1,6 @@
 <div class="container">
-    <nav id="nav" class="row">
-        <div class="col" style="width: calc(25% - 1.6rem);">
+    <nav class="row">
+        <div class="col center">
         <a href="index.html" class="logo">
             <svg viewBox="0 0 180 90" class="shortLogo">
                 <g color="white">
@@ -55,9 +55,9 @@
                 </g>
             </svg>
         </a></div>
-        <div class="col center" style="width: 75%;">
-            <ul class="row end">
-                <li class="closeMenu" onclick="closeSmolMenu()">
+        <div class="col center">
+            <ul class="row end" id="menuItems">
+                <li class="closeMenu" onclick="closeMenu()">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <g color="white">
                             <path
@@ -74,8 +74,8 @@
                 <li id="projects"><a href="projects.html">Projects</a></li>
                 <li id="blog"><a href="blog.html">Blog</a></li>
                 <li id="contact"><a href="contact.html">Contact</a></li>
-                <li class="menu">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" onclick="openSmolMenu()">
+                <li class="openMenu">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" onclick="openMenu()">
                         <g color="white">
                             <!-- Top bar -->
                             <path d="M 8 0 l 84 0 a 8 8 0 0 1 0 16 l -84 0 a 8 8 0 0 1 0 -16" fill="white"
