@@ -1,6 +1,9 @@
 :root {
   --darkest: #111111;
   --darker: #171717;
+  --gap: 1.6rem;
+  --footer-height-narrow: 28rem;
+  --footer-height-wide: 16rem;
 }
 
 /* override browser default */
@@ -11,6 +14,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   position: relative;
   overflow: overlay;
 }
@@ -35,9 +39,13 @@ a:hover {
   transition: 0.2s;
 }
 
+* {
+  max-width: 100%;
+}
+
 *::-webkit-scrollbar {
   display: block;
-  width: 12px;
+  width: 1.2rem;
 }
 
 *::-webkit-scrollbar-button {
@@ -54,20 +62,18 @@ a:hover {
 
 *::-webkit-scrollbar-thumb {
   background-color: #7774;
-  border: 2px solid #fff4;
+  border: 0.2rem solid #fff4;
   border-radius: 16px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: #fff4;
-  border: 2px solid #7774;
+  border: 0.2rem solid #7774;
 }
 
 /* use viewport-relative units to cover page fully */
 
 body {
-  width: 100vw;
-  min-height: 100vh;
   background-color: var(--darkest);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 300;
@@ -75,19 +81,21 @@ body {
 }
 
 .container {
-  width: 75vw;
-  min-height: 100%;
+  width: 90vw;
   margin: 0 auto;
   position: relative;
   transition: all ease-in-out 0.1s;
+  height: 100%;
 }
 
 /* header */
 
 header {
   background-color: var(--darker);
-  min-height: 8rem;
+  height: 8rem;
+  width: 100vw;
   font-weight: 600;
+  padding: 0.8rem 0;
 }
 
 header::after {
@@ -95,93 +103,62 @@ header::after {
   display: table;
   clear: both;
 }
-
-@media (max-width: 900px) {
-  .container {
-    width: 90vw;
-  }
-}
 /* logo */
 
-.logo {
-  float: left;
-  width: 25%;
-  max-height: 70px;
-  margin: 0;
-  position: absolute;
-  top: 4rem;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+.logo{
+  width: 100%;
+  max-height: 6.4rem;
 }
 
-.logo svg {
-  max-height: 70px;
+.logo > svg {
+    max-height: 6.4rem;
 }
 
 .logo .shortLogo {
-  display: none;
-}
-
-.logo .longLogo {
   display: block;
 }
 
-@media (max-width: 900px) {
-  .logo {
-    width: 35%;
-  }
+.logo .longLogo {
+  display: none;
 }
 
-@media (max-width: 1100px) {
+@media only screen and (min-width: 768px) {
   .logo .shortLogo {
-    display: block;
+    display: none;
   }
 
   .logo .longLogo {
-    display: none;
+    display: block;
   }
 }
 
 /* close-logo */
 
 /* nav */
-
 header nav {
-  width: 75%;
-  min-height: 8rem;
-  float: right;
-  margin: 0;
-  padding: 0;
+  justify-content: space-between;
+  height: 100%;
+  width: 50%;
 }
 
-header nav ul {
-  width: 100%;
-  min-height: 8rem;
-  float: right;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
+header nav > :first-child {
+  width: calc(40% - var(--gap));
+}
+
+header nav > :last-child {
+  width: 60%;
 }
 
 header nav li {
-  min-height: 8rem;
-  text-align: right;
-  display: inline-block;
+  display: none;
 }
 
 header nav a {
-  height: 2rem;
   color: #fff;
   font-size: 2rem;
   
   text-transform: uppercase;
   position: relative;
-
-  padding: 3rem 0;
-  bottom: 0px;
-  top: 3rem;
 }
 
 header nav a::before {
@@ -191,7 +168,7 @@ header nav a::before {
   background-color: #55dfaa;
 
   position: absolute;
-  top: 0px;
+  bottom: -1rem;
   right: 0;
   width: 0%;
   transition: all ease-in-out 0.2s;
@@ -205,88 +182,56 @@ header nav .active a::after {
   height: 0.5rem;
   background-color: #55dfaa;
   width: 100%;
-  bottom: 2.5rem;
+  bottom: -1rem;
   right: 0;
 }
 
-header nav li:not(.active, .menu) a:hover::before {
-  width: 100%;
-}
-
 header nav .closeMenu {
+  width: 2rem;
+}
+
+header nav .openMenu {
+  width: 2rem;
+}
+
+header nav li:is(.active, .openMenu){
+  display: block;
+}
+
+header nav .displayMenu li {
+  display: block;
+  padding: 0 2rem;
+}
+
+header nav .displayMenu li.openMenu {
   display: none;
 }
 
-header nav .menu {
-  display: none;
+header nav .displayMenu {
+  position: fixed;
+  width: 20rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--darker);
+  flex-direction: column;
+  justify-content: start;
+  text-align: right;
+  padding: var(--gap);
 }
 
-@media (max-width: 900px) {
-  header nav {
-    width: 65%;
-  }
-
-  header nav ul {
+@media only screen and (min-width: 992px) {
+  header nav li:not(.menu, .close) a:hover::before {
     width: 100%;
-    justify-content: flex-end;
   }
-
-  header nav li.active {
-    padding-right: 5vw;
-  }
-
-  header nav:not(.showMenu) li:not(.active, .menu) {
-    display: none;
-  }
-
-  header nav.showMenu li:not(.active, .menu) {
+  
+  header nav li {
     display: block;
   }
 
-  header nav:not(.showMenu) .menu {
-    display: inline-block;
-  }
-
-  header nav.showMenu li.active {
-    padding-right: 0;
-  }
-
-  header nav .closeMenu svg {
-    height: 3rem;
-    padding: 2.5rem 0;
-  }
-
-  header nav .menu svg {
-    height: 3rem;
-    padding: 2.5rem 0;
-  }
-
-  header nav.showMenu {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 20rem;
-    height: 100vh;
-    background-color: #101010;
-    transition: 0.5s;
-    z-index: 10;
-  }
-
-  header nav.showMenu ul {
-    position: fixed;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    right: 0;
-    top: 0;
-    width: 20rem;
-    height: 100vw;
-  }
-
-  header nav.showMenu li:not(.menu) {
-    display: inline-block;
-    position: relative;
-    right: 5vw;
+  header nav li:is(.closeMenu, .openMenu) {
+    display: none;
   }
 }
 
@@ -297,23 +242,17 @@ header nav .menu {
 /* main */
 
 main {
-  padding-bottom: 11.6rem;
+  padding: 1.6rem 0 calc(var(--footer-height-narrow) + 1.6rem) 0;
+}
+
+@media only screen and (min-width: 600px) {
+  main {
+    padding: 1.6rem 0 calc(var(--footer-height-wide) + 1.6rem) 0;
+  }
 }
 
 section {
   height: 200px;
-}
-
-@media (min-width: 1200px) {
-  main {
-    padding-bottom: 9.8rem;
-  }
-}
-
-@media (max-width: 1000px) {
-  main {
-    padding-bottom: 15.8rem;
-  }
 }
 
 /* close main*/
@@ -321,58 +260,33 @@ section {
 /* footer */
 
 footer {
+  box-sizing: border-box;
   width: 100vw;
+  padding: 1.6rem 0;
   background-color: var(--darker);
   position: absolute;
   bottom: 0;
-  min-height: 11.6rem;
-}
-
-footer .outer-grid {
-  width: 100%;
-  margin: auto;
+  font-size: 2rem;
   color: #fff;
+  height: 28rem;
 }
 
-footer .outer-grid > div {
-  margin: 1.6rem 0;
+footer .col {
+  width: calc(50% - calc(var(--gap) / 2));
 }
 
-footer nav {
-  min-height: fit-content;
+footer .socials .col {
+  width: 100%;
 }
 
-footer nav div {
-  margin-block-start: 1.6rem;
-  margin-block-end: 1.6rem;
-  font-size: 2rem;
-  height: 2rem;
-  font-weight: bold;
-}
+@media only screen and (min-width: 600px) {
+  footer {
+    height: 16rem;
+  }
 
-footer ul {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  list-style-type: none;
-    flex-wrap: wrap;
-  padding: 0;
-  margin: 1.6rem 0;
-}
-
-footer li {
-  text-align: end;
-  width: fit-content;
-  font-size: 2rem;
-  height: 2rem;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-footer a {
-  display: inline-block;
-  position: relative;
-  height: 100%;
+  footer .socials .col {
+    width: calc(50% - calc(var(--gap) / 2));
+  }
 }
 
 footer img,
@@ -382,65 +296,12 @@ footer svg {
   vertical-align: baseline;
 }
 
-footer .top span {
-  display: inline-block;
-  line-height: 2rem;
-  vertical-align: top;
-  margin-bottom: 0;
-}
-
-footer .bottom {
-  height: 1.4rem;
-}
-
 footer .copy {
   position: relative;
   text-align: center;
   font-size: 1.4rem;
   font-weight: lighter;
   height: 1.4rem;
-}
-
-@media (min-width: 1200px) {
-  footer nav div {
-    width: 10%;
-    float: left;
-  }
-
-  footer nav ul {
-    width: 90%;
-    float: right;
-  }
-
-  footer nav {
-    min-height: 5.2rem;
-  }
-
-  footer {
-    min-height: 9.8rem;
-  }
-}
-
-@media (max-width: 1000px) {
-  footer ul {
-    flex-wrap: wrap;
-  }
-
-  footer li {
-    flex-basis: 30%;
-  }
-
-  footer li.col1 {
-    text-align: left;
-  }
-
-  footer li.col2 {
-    text-align: center;
-  }
-
-  footer {
-    min-height: 15.2rem;
-  }
 }
 
 /* close-footer */

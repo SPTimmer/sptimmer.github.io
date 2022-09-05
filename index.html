@@ -9,44 +9,57 @@
     <meta name="author" content="SPTimmer">
     <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/elements.css">
     <link rel="stylesheet" href="css/svg-transitions.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="scripts/nav.js"></script>
 </head>
 
 <body>
     <header id="header"></header>
     <main>
         <div class="container">
-            <section style="background-color: #f008;"></section>
-            <section style="background-color: #0f08;"></section>
-            <section style="background-color: #00f8;"></section>
-            <section style="background-color: #ff08;"></section>
-            <section style="background-color: #0ff8;"></section>
-            <section style="background-color: #f0f8;"></section>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">Title</div>
+                        <div class="card-content" style="background-color: #F00; min-height: 200px;"></div>
+                        <div class="card-footer">Footer</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Title</div>
+                        <div class="card-content" style="background-color: #F00; min-height: 200px;"></div>
+                        <div class="card-footer">Footer</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">Title</div>
+                        <div class="card-content" style="background-color: #0F0; min-height: 200px;"></div>    
+                        <div class="card-footer">Footer</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Title</div>
+                        <div class="card-content" style="background-color: #0F0; min-height: 200px;"></div>
+                        <div class="card-footer">Footer</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">Title</div>
+                        <div class="card-content" style="background-color: #00F; min-height: 200px;"></div>
+                        <div class="card-footer">Footer</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Title</div>
+                        <div class="card-content" style="background-color: #00F; min-height: 200px;"></div>
+                        <div class="card-footer">Footer</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer id="footer"></footer>
-
-    <script>
-        $("#header").load("assets/header.html", function () {
-            let page = window.location.pathname.split("/").pop();
-            if (page === "") {
-                $("#index").addClass("active");
-            } else {
-                $("#" + page.split(".")[0]).addClass("active");
-            }
-        });
-        $("#footer").load("assets/footer.html", function () {
-            $("#year").text(new Date().getFullYear());
-        });
-        function openSmolMenu() {
-            $("#nav").addClass("showMenu");
-        }
-        function closeSmolMenu() {
-            $("#nav").removeClass("showMenu");
-        }
-    </script>
-
 </body>
 
 </html>
